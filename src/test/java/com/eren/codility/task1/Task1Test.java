@@ -14,6 +14,7 @@ public class Task1Test {
     @Test
     public void testTask()
     {
+        Integer.bitCount()
         int n = 5;
         int[] input = new int[n];
         Assert.assertEquals(task1.solution(input), -1);
