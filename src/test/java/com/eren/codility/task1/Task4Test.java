@@ -1,20 +1,18 @@
 package com.eren.codility.task1;
 
-import com.eren.codility.task1.Task1;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Random;
 
-
-public class Task1Test {
-    Task4 task1 = new Task4();
+public class Task4Test {
+    Task5 task1 = new Task5();
     int x = -2147483648;
 
     @Test
     public void testTask()
     {
-        String input = "1-2,2-2,3-3,3-4,4-5,1-1,1-2";// "1-1,3-5,5-2,2-3,2-4";
+        String[] input = {"I>N","A>I","P>A","S>P"};// "1-1,3-5,5-2,2-3,2-4";
+
         Assert.assertEquals(task1.solution(input), 3);
     }
 

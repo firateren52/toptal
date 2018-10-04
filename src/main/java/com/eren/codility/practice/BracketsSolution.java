@@ -18,7 +18,6 @@ public class BracketsSolution {
         String bracket1Left = "(", bracket1Right = ")" ;
         String bracket2Left = "[", bracket2Right = "]" ;
         String bracket3Left = "{", bracket3Right = "}" ;
-        Collections.sort();
         Stack<Integer> bracketStack = new Stack<Integer>();
         for(int i = 0; i < S.length(); i ++) {
             String bracket = String.valueOf(S.charAt(i));
