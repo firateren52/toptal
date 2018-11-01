@@ -1,0 +1,2 @@
+- amazon https://www.geeksforgeeks.org/find-minimum-numbers-moves-needed-move-one-cell-matrix-another/
+- amazon https://www.geeksforgeeks.org/minimum-cost-path-left-right-bottom-moves-allowed/

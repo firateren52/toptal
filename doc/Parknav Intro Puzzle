@@ -38,3 +38,8 @@ The result is 3. You would need one camera at 1, another at 15, and 3rd one at 4
 
 cameraRange can go up to 10 spaces, and each street can have 100 parking spaces. You don’t need to write code to validate this. 
 While this might seem like no one would care about runtime complexity for 100 spaces, there are 100000+ streets in some cities ;) 
+
+EDIT:
+
+cameraRange = 40
+parkingSpaces = [1, 15, 30, 40, 50]
