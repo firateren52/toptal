@@ -1,7 +1,5 @@
 package com.eren.parknav;
 
-import java.util.Arrays;
-
 public class ParkingCameraSolution {
 
     int debugLoopCount2 = 0;
@@ -17,7 +15,8 @@ public class ParkingCameraSolution {
                 cameraSpace = j;
                 debugLoopCount ++;
             }
-            //System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
+            if(cameraCount < 10)
+                System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
             totalRange = parkingSpaces[cameraSpace] + range;
             for (int j = cameraSpace; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
                 i = j;
@@ -27,7 +26,7 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
+        System.out.println("findMinCameras cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
         return cameraCount;
     }
 
@@ -37,12 +36,23 @@ public class ParkingCameraSolution {
         int debugLoopCount = 0;
         while(i < parkingSpaces.length) {
             int totalRange = parkingSpaces[i] + range;
-            int cameraSpace = i;
-            for (int j = i; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
-                cameraSpace = j;
-                debugLoopCount ++;
+            float averageRange = (float) (parkingSpaces[parkingSpaces.length-1] - parkingSpaces[i]) / (float)(parkingSpaces.length- 1 - i);
+            int cameraSpace = Math.min(parkingSpaces.length - 1, Math.round(range / averageRange) + i);
+            if(parkingSpaces[cameraSpace] <= totalRange) {
+                for (int j = cameraSpace; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
+                    cameraSpace = j;
+                    debugLoopCount++;
+                }
+            } else {
+                for (int j = cameraSpace; j >= i && parkingSpaces[j] > totalRange; j--) {
+                    cameraSpace = j;
+                    debugLoopCount++;
+                }
+                cameraSpace --;
             }
-            //System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
+            if(cameraCount < 10)
+                System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
+
             totalRange = parkingSpaces[cameraSpace] + range;
             for (int j = cameraSpace; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
                 i = j;
@@ -52,17 +62,19 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
+        System.out.println("findMinCamerasHeuristic cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
         return cameraCount;
     }
 
     public int findMinCamerasBinarySearch(int range, int[] parkingSpaces) {
         int cameraCount = 0;
         int i = 0;
+        debugLoopCount2 = 0;
         while(i < parkingSpaces.length) {
             int totalRange = parkingSpaces[i] + range;
             int cameraSpace = binarySearch0(parkingSpaces, i, parkingSpaces.length, totalRange);
-            //System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
+            if(cameraCount < 10)
+                System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
 
             totalRange = parkingSpaces[cameraSpace] + range;
             i = binarySearch0(parkingSpaces, cameraSpace, parkingSpaces.length, totalRange);
@@ -70,8 +82,45 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
+        System.out.println("findMinCamerasBinarySearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
         return cameraCount;
+    }
+
+    public int findMinCamerasExponentialSearch(int range, int[] parkingSpaces) {
+        int cameraCount = 0;
+        int i = 0;
+        debugLoopCount2 = 0;
+        while(i < parkingSpaces.length) {
+            int totalRange = parkingSpaces[i] + range;
+            int cameraSpace = exponentialSearch(parkingSpaces, i, totalRange);
+            if(cameraCount < 10)
+                System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
+
+            totalRange = parkingSpaces[cameraSpace] + range;
+            i = exponentialSearch(parkingSpaces, cameraSpace, totalRange);
+            i++;
+            cameraCount ++;
+            //debugLoopCount ++;
+        }
+        System.out.println("findMinCamerasExponentialSearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
+        return cameraCount;
+    }
+
+    private int exponentialSearch(int a[], int fromIndex, int key)
+    {
+        // If x is present at firt location itself
+        if (a[0] == key)
+            return 0;
+
+        // Find range for binary search by
+        // repeated doubling
+        int i = fromIndex;
+        while (i < a.length && a[i] <= key)
+            i = i*2 + 1;
+
+        // Call exponential search for the found range.
+        return binarySearch0(a, i/2,
+                Math.min(i, a.length), key);
     }
 
     // Like public version, but without range checks.

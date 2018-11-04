@@ -10,6 +10,22 @@ public class ParkingCameraSolutionTest {
     ParkingCameraSolution solution = new ParkingCameraSolution();
 
     @Test
+    public void testTaskExponential()
+    {
+        int[] input = {1,15,30,40,50};
+        int range = 10;
+        Assert.assertEquals(3, solution.findMinCamerasExponentialSearch(range, input));
+    }
+
+    @Test
+    public void testTaskHeuristic()
+    {
+        int[] input = {1,15,30,40,50};
+        int range = 10;
+        Assert.assertEquals(3, solution.findMinCamerasHeuristic(range, input));
+    }
+
+    @Test
     public void testTaskBinarySearch()
     {
         int[] input = {1,15,30,40,50};
@@ -32,6 +48,8 @@ public class ParkingCameraSolutionTest {
         int range = 2;
         Assert.assertEquals(3, solution.findMinCameras(range, input));
         Assert.assertEquals(3, solution.findMinCamerasBinarySearch(range, input));
+        Assert.assertEquals(3, solution.findMinCamerasHeuristic(range, input));
+        Assert.assertEquals(3, solution.findMinCamerasExponentialSearch(range, input));
     }
 
     @Test
@@ -41,6 +59,8 @@ public class ParkingCameraSolutionTest {
         int range = 3;
         Assert.assertEquals(2, solution.findMinCameras(range, input));
         Assert.assertEquals(2, solution.findMinCamerasBinarySearch(range, input));
+        Assert.assertEquals(2, solution.findMinCamerasHeuristic(range, input));
+        Assert.assertEquals(2, solution.findMinCamerasExponentialSearch(range, input));
     }
 
     @Test
@@ -50,20 +70,27 @@ public class ParkingCameraSolutionTest {
         int range = 6;
         Assert.assertEquals(1, solution.findMinCameras(range, input));
         Assert.assertEquals(1, solution.findMinCamerasBinarySearch(range, input));
+        Assert.assertEquals(1, solution.findMinCamerasHeuristic(range, input));
+        Assert.assertEquals(1, solution.findMinCamerasExponentialSearch(range, input));
     }
 
     @Test
     public void testTaskLargeInput()
     {
         int n = 100000;
+        int k = 10;
         int[] input = new int[n];
-        int range = 20;
+        int range = 5;
         Random rand = new Random();
         int  x = 0;
         for(int i = 0; i < n; i ++)
-            input[i] = rand.nextInt(n) + 1;
+            input[i] = rand.nextInt(n * k) + 1;
+        input = Arrays.stream(input).distinct().toArray();
         Arrays.sort(input);
         Assert.assertTrue(solution.findMinCameras(range, input) > 0);
         Assert.assertTrue(solution.findMinCamerasBinarySearch(range, input) > 0);
+        Assert.assertTrue(solution.findMinCamerasHeuristic(range, input) > 0);
+        Assert.assertTrue(solution.findMinCamerasExponentialSearch(range, input) > 0);
+
     }
 }
