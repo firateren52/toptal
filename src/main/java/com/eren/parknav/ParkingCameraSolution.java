@@ -43,6 +43,7 @@ public class ParkingCameraSolution {
                     cameraSpace = j;
                     debugLoopCount++;
                 }
+                debugLoopCount = debugLoopCount;
             } else {
                 for (int j = cameraSpace; j >= i && parkingSpaces[j] > totalRange; j--) {
                     cameraSpace = j;
@@ -54,9 +55,20 @@ public class ParkingCameraSolution {
                 System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
 
             totalRange = parkingSpaces[cameraSpace] + range;
-            for (int j = cameraSpace; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
-                i = j;
-                debugLoopCount ++;
+            averageRange = (float) (parkingSpaces[parkingSpaces.length-1] - parkingSpaces[cameraSpace]) / (float)(parkingSpaces.length - 1 - cameraSpace);
+            i = Math.min(parkingSpaces.length - 1, Math.round(range / averageRange) + cameraSpace);
+            if(parkingSpaces[i] <= totalRange) {
+                for (int j = i; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
+                    i = j;
+                    debugLoopCount++;
+                }
+                debugLoopCount = debugLoopCount;
+            } else {
+                for (int j = i; j >= cameraSpace && parkingSpaces[j] > totalRange; j--) {
+                    i = j;
+                    debugLoopCount++;
+                }
+                i --;
             }
             i++;
             cameraCount ++;

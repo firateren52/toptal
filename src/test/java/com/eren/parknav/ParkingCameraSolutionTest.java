@@ -80,17 +80,19 @@ public class ParkingCameraSolutionTest {
         int n = 100000;
         int k = 10;
         int[] input = new int[n];
-        int range = 5;
+        int range = 1;
         Random rand = new Random();
         int  x = 0;
         for(int i = 0; i < n; i ++)
             input[i] = rand.nextInt(n * k) + 1;
         input = Arrays.stream(input).distinct().toArray();
         Arrays.sort(input);
+        float averageRange = (float)( range * (input.length- 1)) / (float)(input[input.length - 1] - input[0]);
+        System.out.println("average range: " + averageRange);
         Assert.assertTrue(solution.findMinCameras(range, input) > 0);
         Assert.assertTrue(solution.findMinCamerasBinarySearch(range, input) > 0);
-        Assert.assertTrue(solution.findMinCamerasHeuristic(range, input) > 0);
         Assert.assertTrue(solution.findMinCamerasExponentialSearch(range, input) > 0);
+        Assert.assertTrue(solution.findMinCamerasHeuristic(range, input) > 0);
 
     }
 }
