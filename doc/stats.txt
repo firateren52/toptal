@@ -1,0 +1,26 @@
+int n = 10000;
+int k = 2;
+int[] input = new int[n];
+int range = 50;
+
+findMinCameras cameraCount:198, n:7868, debugLoopCount:8066
+findMinCamerasBinarySearch cameraCount:198, n:7868, debugLoopCount2:4426
+findMinCamerasHeuristic cameraCount:198, n:7868, debugLoopCount:4614
+findMinCamerasExponentialSearch cameraCount:198, n:7868, debugLoopCount2:4025
+----
+        int n = 10000;
+        int k = 10;
+        int range = 50;
+findMinCameras cameraCount:984, n:9530, debugLoopCount:10514
+findMinCamerasBinarySearch cameraCount:984, n:9530, debugLoopCount2:22989
+findMinCamerasHeuristic cameraCount:984, n:9530, debugLoopCount:6975
+findMinCamerasExponentialSearch cameraCount:984, n:9530, debugLoopCount2:21064
+--
+
+
+findMinCameras cameraCount:4031, n:9517, debugLoopCount:13548
+findMinCamerasBinarySearch cameraCount:4031, n:9517, debugLoopCount2:93858
+findMinCamerasHeuristic cameraCount:4031, n:9517, debugLoopCount:10971
+findMinCamerasExponentialSearch cameraCount:4031, n:9517, debugLoopCount2:85881
+
+

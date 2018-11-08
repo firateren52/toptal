@@ -4,7 +4,7 @@ public class ParkingCameraSolution {
 
     int debugLoopCount2 = 0;
 
-    public int findMinCameras(int range, int[] parkingSpaces) {
+    public int findMinimumNumberOfCamerasLinearSearch(int range, int[] parkingSpaces) {
         int cameraCount = 0;
         int i = 0;
         int debugLoopCount = 0;
@@ -26,59 +26,11 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("findMinCameras cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
+        System.out.println("findMinimumNumberOfCamerasLinearSearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
         return cameraCount;
     }
 
-    public int findMinCamerasHeuristic(int range, int[] parkingSpaces) {
-        int cameraCount = 0;
-        int i = 0;
-        int debugLoopCount = 0;
-        while(i < parkingSpaces.length) {
-            int totalRange = parkingSpaces[i] + range;
-            float averageRange = (float) (parkingSpaces[parkingSpaces.length-1] - parkingSpaces[i]) / (float)(parkingSpaces.length- 1 - i);
-            int cameraSpace = Math.min(parkingSpaces.length - 1, Math.round(range / averageRange) + i);
-            if(parkingSpaces[cameraSpace] <= totalRange) {
-                for (int j = cameraSpace; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
-                    cameraSpace = j;
-                    debugLoopCount++;
-                }
-                debugLoopCount = debugLoopCount;
-            } else {
-                for (int j = cameraSpace; j >= i && parkingSpaces[j] > totalRange; j--) {
-                    cameraSpace = j;
-                    debugLoopCount++;
-                }
-                cameraSpace --;
-            }
-            if(cameraCount < 10)
-                System.out.println("cameraSpace:" + parkingSpaces[cameraSpace]);
-
-            totalRange = parkingSpaces[cameraSpace] + range;
-            averageRange = (float) (parkingSpaces[parkingSpaces.length-1] - parkingSpaces[cameraSpace]) / (float)(parkingSpaces.length - 1 - cameraSpace);
-            i = Math.min(parkingSpaces.length - 1, Math.round(range / averageRange) + cameraSpace);
-            if(parkingSpaces[i] <= totalRange) {
-                for (int j = i; j < parkingSpaces.length && parkingSpaces[j] <= totalRange; j++) {
-                    i = j;
-                    debugLoopCount++;
-                }
-                debugLoopCount = debugLoopCount;
-            } else {
-                for (int j = i; j >= cameraSpace && parkingSpaces[j] > totalRange; j--) {
-                    i = j;
-                    debugLoopCount++;
-                }
-                i --;
-            }
-            i++;
-            cameraCount ++;
-            //debugLoopCount ++;
-        }
-        System.out.println("findMinCamerasHeuristic cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount:" + debugLoopCount);
-        return cameraCount;
-    }
-
-    public int findMinCamerasBinarySearch(int range, int[] parkingSpaces) {
+    public int findMinimumNumberOfCamerasBinarySearch(int range, int[] parkingSpaces) {
         int cameraCount = 0;
         int i = 0;
         debugLoopCount2 = 0;
@@ -94,11 +46,11 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("findMinCamerasBinarySearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
+        System.out.println("findMinimumNumberOfCamerasBinarySearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
         return cameraCount;
     }
 
-    public int findMinCamerasExponentialSearch(int range, int[] parkingSpaces) {
+    public int findMinimumNumberOfCamerasExponentialSearch(int range, int[] parkingSpaces) {
         int cameraCount = 0;
         int i = 0;
         debugLoopCount2 = 0;
@@ -114,7 +66,7 @@ public class ParkingCameraSolution {
             cameraCount ++;
             //debugLoopCount ++;
         }
-        System.out.println("findMinCamerasExponentialSearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
+        System.out.println("findMinimumNumberOfCamerasExponentialSearch cameraCount:" + cameraCount + ", n:" + parkingSpaces.length + ", debugLoopCount2:" + debugLoopCount2);
         return cameraCount;
     }
 
