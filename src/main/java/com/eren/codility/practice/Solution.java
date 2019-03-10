@@ -14,6 +14,7 @@ class Solution {
             if(A[i] == min) {
                 min++;
             }
+
         }
         return min;
     }

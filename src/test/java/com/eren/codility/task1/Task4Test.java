@@ -16,7 +16,7 @@ public class Task4Test {
         Assert.assertEquals(task1.solution(input), 3);
     }
 
-   /* @Test
+   /* @CharUtil
     public void testTaskEmpty()
     {
         int n = 5;
@@ -24,7 +24,7 @@ public class Task4Test {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskBigValues()
     {
         int n = 5;
@@ -32,7 +32,7 @@ public class Task4Test {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskLargeInput()
     {
         int n = 1000;

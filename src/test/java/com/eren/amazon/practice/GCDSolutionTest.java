@@ -3,9 +3,6 @@ package com.eren.amazon.practice;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 
 public class GCDSolutionTest {
     GCDSolution solution = new GCDSolution();
@@ -34,7 +31,7 @@ public class GCDSolutionTest {
         Assert.assertEquals(solution.generalizedGCD(num, input), 20);
     }
 
-/*    @Test
+/*    @CharUtil
     public void testTaskBigValues()
     {
         int n = 5;
@@ -42,7 +39,7 @@ public class GCDSolutionTest {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskLargeInput()
     {
         int n = 1000;

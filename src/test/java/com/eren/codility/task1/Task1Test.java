@@ -1,10 +1,7 @@
 package com.eren.codility.task1;
 
-import com.eren.codility.task1.Task1;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Random;
 
 
 public class Task1Test {
@@ -18,7 +15,7 @@ public class Task1Test {
         Assert.assertEquals(task1.solution(input), 3);
     }
 
-   /* @Test
+   /* @CharUtil
     public void testTaskEmpty()
     {
         int n = 5;
@@ -26,7 +23,7 @@ public class Task1Test {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskBigValues()
     {
         int n = 5;
@@ -34,7 +31,7 @@ public class Task1Test {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskLargeInput()
     {
         int n = 1000;

@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Task5 {
 
@@ -34,7 +33,6 @@ public class Task5 {
     public String solutionNew(String[] words) {
         int[] visitedStatusArray = new int[words.length];
         Arrays.fill(visitedStatusArray, -1);
-        Stream<String> wordsStream = Arrays.stream(words);
         IntStream.range(0, words.length).forEach(i -> {
             char match = words[i].charAt(2);
             for(int j = 0; j < words.length; j ++) {

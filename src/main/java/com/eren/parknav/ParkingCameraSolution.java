@@ -92,7 +92,6 @@ public class ParkingCameraSolution {
                                      int key) {
         int low = fromIndex;
         int high = toIndex - 1;
-
         while (low <= high) {
             int mid = (low + high) >>> 1;
             int midVal = a[mid];

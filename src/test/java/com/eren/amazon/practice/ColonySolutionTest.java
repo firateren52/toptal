@@ -1,6 +1,5 @@
 package com.eren.amazon.practice;
 
-import com.eren.codility.task1.Task5;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,7 +28,7 @@ public class ColonySolutionTest {
         Assert.assertTrue(output.equals(solution.cellCompete(input, days)));
     }
 
-/*    @Test
+/*    @CharUtil
     public void testTaskBigValues()
     {
         int n = 5;
@@ -37,7 +36,7 @@ public class ColonySolutionTest {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskLargeInput()
     {
         int n = 1000;

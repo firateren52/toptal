@@ -42,7 +42,7 @@ public class SteakHoueseSolutionTest {
         List<Integer> output = Arrays.asList(0,0,0,0,0,1,1,0);
     }
 
-/*    @Test
+/*    @CharUtil
     public void testTaskBigValues()
     {
         int n = 5;
@@ -50,7 +50,7 @@ public class SteakHoueseSolutionTest {
         Assert.assertEquals(task1.solution(input), -1);
     }
 
-    @Test
+    @CharUtil
     public void testTaskLargeInput()
     {
         int n = 1000;
