@@ -12,7 +12,7 @@ class Node {
     }
 }
 
-class BinaryTree {
+class BinarySearchTree {
 
     static Node head;
 
@@ -58,7 +58,7 @@ class BinaryTree {
 
     // Driver program to test above functions
     public static void main(String[] args) {
-        BinaryTree tree = new BinaryTree();
+        BinarySearchTree tree = new BinarySearchTree();
         Node root = null;
         root = tree.insert(root, 4);
         tree.insert(root, 2);

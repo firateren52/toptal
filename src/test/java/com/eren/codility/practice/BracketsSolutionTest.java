@@ -16,10 +16,16 @@ public class BracketsSolutionTest {
         String S = "{[()()]}";
         Assert.assertEquals(solution.solution(S), 1);
 
+        S = "()]";
+        Assert.assertEquals(solution.solution(S), 0);
+
         S = "([)()]";
         Assert.assertEquals(solution.solution(S), 0);
 
         S = "(";
+        Assert.assertEquals(solution.solution(S), 0);
+
+        S = "(]";
         Assert.assertEquals(solution.solution(S), 0);
 
         S = "";

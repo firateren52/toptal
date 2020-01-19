@@ -5,6 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+
+/**
+ * Breadth First Traversal of a tree
+ */
 public class Bfs {
     /*
              ___A___
@@ -33,17 +37,17 @@ public class Bfs {
 
     private static void bfs(Node node) {
         String output = "";
-        Queue<Node> list = new LinkedList<Node>();
+        Queue<Node> list = new LinkedList<>();
         list.add(node);
         while (!list.isEmpty()) {
             Node n = list.poll();
             output += n.name + "-";
-            n.children.forEach(nn -> list.add(nn));
+            list.addAll(n.children);
         }
         System.out.println(output);
     }
 
-    private static class Node {
+    static class Node {
         String name;
         List<Node> children;
 

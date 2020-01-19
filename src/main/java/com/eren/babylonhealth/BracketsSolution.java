@@ -14,29 +14,29 @@ public class BracketsSolution {
         rightBrackets.add(0, ")");
         rightBrackets.add(1, "]");
         rightBrackets.add(2, "}");
-        String bracket1Left = "(", bracket1Right = ")" ;
-        String bracket2Left = "[", bracket2Right = "]" ;
-        String bracket3Left = "{", bracket3Right = "}" ;
+        String bracket1Left = "(", bracket1Right = ")";
+        String bracket2Left = "[", bracket2Right = "]";
+        String bracket3Left = "{", bracket3Right = "}";
         Stack<Integer> bracketStack = new Stack<Integer>();
-        for(int i = 0; i < S.length(); i ++) {
+        for (int i = 0; i < S.length(); i++) {
             String bracket = String.valueOf(S.charAt(i));
             int index = leftBrackets.indexOf(bracket);
-            if(index >= 0) {
+            if (index >= 0) {
                 bracketStack.push(index);
             } else {
                 index = rightBrackets.indexOf(bracket);
-                if(bracketStack.empty()) {
+                if (bracketStack.empty()) {
                     return "NO";
                 }
                 int lastBracketIntex = bracketStack.peek();
-                if(index != lastBracketIntex) {
+                if (index != lastBracketIntex) {
                     return "NO";
                 } else {
                     bracketStack.pop();
                 }
             }
         }
-        if(bracketStack.empty())
+        if (bracketStack.empty())
             return "YES";
         else
             return "NO";
@@ -45,13 +45,13 @@ public class BracketsSolution {
     // Complete the braces function below.
     static String[] braces(String[] values) {
         String[] results = new String[values.length];
-        for(int i = 0;i < values.length;i ++) {
+        for (int i = 0; i < values.length; i++) {
             results[i] = brace(values[i]);
         }
         return results;
     }
 
     public static void main(String[] args) {
-      System.out.println(brace("}][}}(}][))]"));
+        System.out.println(brace("}][}}(}][))]"));
     }
 }

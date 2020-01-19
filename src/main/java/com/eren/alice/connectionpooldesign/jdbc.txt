@@ -1,0 +1,52 @@
+JDBC (along with optional extensions)
+Mainly interfaces
+
+Different vendors provide different implementations (e.g., OracleConnection, SybaseConnection, etc.)
+
+Almost all methods throw SQLException (all that directly concern us do)
+
+Many interfaces have a close() method to conserve resources
+
+For any interface that can be closed, most of its methods throw a SQLException after the interface has been closed (except for, e.g., isClosed() & close())
+
+DataSource
+Connection	getConnection()
+
+Connection
+Statement	createStatement()
+
+void		commit()
+
+void		rollback()
+
+void		close()
+
+boolean	isClosed()
+
+
+
+
+Statement
+ResultSet	executeQuery(String sql)
+
+int		executeUpdate(String sql)
+
+Connection	getConnection()
+
+void		close()
+
+boolean	isClosed()
+
+
+
+
+ResultSet
+boolean	next()
+
+<X>		get<X>(String columnName)
+
+Statement	getStatement()
+
+void		close()
+
+
